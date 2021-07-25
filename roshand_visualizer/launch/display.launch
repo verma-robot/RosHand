@@ -1,0 +1,41 @@
+<launch>
+ 
+
+
+
+  <arg name="robot_namespace" default="/"/>
+  <arg name="with_real_robot" default="true"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find roshand_visualizer)/urdf/roshand_description_alone.xacro'
+   --inorder
+robot_namespace:=$(arg robot_namespace)
+
+ " />
+
+<group unless = "$(arg with_real_robot)">
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+    </node>
+</group>
+
+
+<group if = "$(arg with_real_robot)">
+
+   
+  <node name="roshand_visual" pkg="roshand_visualizer" type="roshand_visual" output="screen" required="true" cwd="node" >
+
+  <param name="ns" value="${arg robot_namespace}"/>
+
+
+</node>
+</group>
+
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find roshand_visualizer)/rviz/roshand.rviz" />
+</launch>

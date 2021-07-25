@@ -1,0 +1,6 @@
+int16 close_step_mag
+int16 open_step_masg
+---
+bool finish
+---
+Hand state

@@ -1,0 +1,42 @@
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <!--node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" /-->
+
+
+  <arg name="robot_namespace" default="/"/>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find roshand_visualizer)/urdf/roshand_description_alone.xacro'
+   --inorder robot_namespace:=$(arg robot_namespace)
+ " />
+
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -model $(arg robot_namespace) -param robot_description
+     -J $(arg robot_namespace)/right_3_joint 1.5
+     -x 0  
+     -y 0
+     -z 0
+"
+     />
+
+
+
+ <include
+    file="$(find roshand_control)/launch/roshand_control.launch" />
+
+
+
+  <!--node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" /-->
+</launch>

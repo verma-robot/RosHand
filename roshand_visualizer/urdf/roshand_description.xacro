@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<root xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <xacro:arg name="robot_namespace" default="/" />  
+    <xacro:macro name="roshand" params="link_name">
+ 
+  <link
+    name="${link_name}">
+    <inertial>
+      <origin
+        xyz="0 0 0.0353"
+        rpy="0 0 0" />
+      <mass
+        value="0.124086510989108" />
+      <inertia
+        ixx="0.00018251"
+        ixy="2.3524206315766E-08"
+        ixz="-6.7465E-08"
+        iyy="0.00018072"
+        iyz="1.2749E-08"
+        izz="0.000118290433162231" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="right_3_link">
+    <inertial>
+      <origin
+        xyz="-0.0118555883710859 0.000100001363459979 0.0172395866913813"
+        rpy="0 0 0" />
+      <mass
+        value="0.0116936770982047" />
+      <inertia
+        ixx="2.17032851391982E-06"
+        ixy="2.32951846807088E-13"
+        ixz="1.1102379029152E-06"
+        iyy="2.63023717817379E-06"
+        iyz="-1.85384179164476E-13"
+        izz="1.85073417902641E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/right_3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/right_3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="right_3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0001 0.016234 0.10228"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="${link_name}" />
+    <child
+      link="right_3_link" />
+    <axis
+      xyz="0 1 0" />
+
+
+    <!--mimic
+      joint="up_base_joint"
+      multiplier="-5"
+      offset="0" /-->
+
+  </joint>
+
+  <link
+    name="right_fingertips_link">
+    <inertial>
+      <origin
+        xyz="-0.000632940131234702 -9.99982884161304E-05 0.0186732032447686"
+        rpy="0 0 0" />
+      <mass
+        value="0.0122304966394345" />
+      <inertia
+        ixx="3.80515648947653E-06"
+        ixy="-1.22381514908965E-13"
+        ixz="5.95757115137678E-07"
+        iyy="3.66173593403381E-06"
+        iyz="3.39077711590419E-13"
+        izz="9.259427534907E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/right_fingertips_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/right_fingertips_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_fingertips_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0320457890866599 0 0.0383805602071322"
+      rpy="0 0 3.14159265358979" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_fingertips_link" />
+    <axis
+      xyz="0 -1 0" />
+
+    <mimic
+      joint="right_3_joint"
+      multiplier="-1"
+      offset="0" />
+
+
+  </joint>
+
+  <link
+    name="right_fingertips_sensor_1_link">
+    
+  </link>
+  <joint
+    name="right_fingertips_sensor_1_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 -0.00610000000001723 0.0395000000000003"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_fingertips_sensor_2_link">
+    
+  </link>
+  <joint
+    name="right_fingertips_sensor_2_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 -0.00610000000001704 0.0305000000000002"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_fingertips_sensor_3_link">
+    
+  </link>
+  <joint
+    name="right_fingertips_sensor_3_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 -0.00610000000001685 0.0215000000000002"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_fingertips_sensor_4_link">
+    
+  </link>
+  <joint
+    name="right_fingertips_sensor_4_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 -0.00610000000001666 0.0125000000000002"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_4_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_fingertips_sensor_5_link">
+    
+  </link>
+  <joint
+    name="right_fingertips_sensor_5_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 0.00589999999998734 0.0395000000000004"
+      rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_5_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_fingertips_sensor_6_link">
+   
+  </link>
+  <joint
+    name="right_fingertips_sensor_6_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 0.00589999999998734 0.0305000000000004"
+      rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_6_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_fingertips_sensor_7_link">
+    
+  </link>
+  <joint
+    name="right_fingertips_sensor_7_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 0.00589999999998734 0.0215000000000004"
+      rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_7_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_fingertips_sensor_8_link">
+    
+  </link>
+  <joint
+    name="right_fingertips_sensor_8_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00900000000000016 0.00589999999998734 0.0125000000000004"
+      rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="right_fingertips_link" />
+    <child
+      link="right_fingertips_sensor_8_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_1_link">
+    
+  </link>
+  <joint
+    name="right_sensor_1_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0142417199599119 0.0061000000000038 0.0310994117723057"
+      rpy="2.26648702719302 0 -1.57079632679469" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_2_link">
+    
+  </link>
+  <joint
+    name="right_sensor_2_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0084734779243134 0.00610000000000374 0.0241909109350221"
+      rpy="2.26648702719302 0 -1.57079632679468" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_3_link">
+    
+  </link>
+  <joint
+    name="right_sensor_3_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00270523588871458 0.00610000000000367 0.0172824100977381"
+      rpy="2.26648702719302 0 -1.57079632679451" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_4_link">
+    
+  </link>
+  <joint
+    name="right_sensor_4_joint"
+    type="fixed">
+    <origin
+      xyz="0.00306300614688425 0.00610000000000338 0.0103739092604541"
+      rpy="2.26648702719303 0 -1.57079632679452" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_4_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_5_link">
+    
+  </link>
+  <joint
+    name="right_sensor_5_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0142417199599119 -0.00590000000000125 0.0310994117723057"
+      rpy="-2.26648702719302 0 1.57079632679473" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_5_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_6_link">
+   
+  </link>
+  <joint
+    name="right_sensor_6_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00847347792431343 -0.00590000000000125 0.0241909109350221"
+      rpy="-2.26648702719302 0 1.57079632679463" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_6_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_7_link">
+    
+  </link>
+  <joint
+    name="right_sensor_7_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00270523588871461 -0.00590000000000124 0.0172824100977381"
+      rpy="-2.26648702719303 0 1.57079632679453" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_7_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_sensor_8_link">
+   
+  </link>
+  <joint
+    name="right_sensor_8_joint"
+    type="fixed">
+    <origin
+      xyz="0.00306300614688423 -0.00590000000000102 0.0103739092604541"
+      rpy="-2.26648702719302 0 1.57079632677547" />
+    <parent
+      link="right_3_link" />
+    <child
+      link="right_sensor_8_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link
+    name="left_4_link">
+    
+    <inertial>
+      <origin
+        xyz="-0.0167697761373785 -0.000100086522133043 0.011594695938048"
+        rpy="0 0 0" />
+      <mass
+        value="0.0144758999770992" />
+      <inertia
+        ixx="2.61112201179927E-06"
+        ixy="-2.26921104230571E-11"
+        ixz="2.04038212451253E-06"
+        iyy="5.19299573894197E-06"
+        iyz="1.68854193142199E-11"
+        izz="4.08921935173279E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/left_4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/left_4_link.STL" />
+      </geometry>
+    </collision>
+
+  </link>
+  <joint
+    name="left_4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0001 -0.02849 0.092"
+      rpy="0 0 1.5708" />
+    <parent
+      link="${link_name}" />
+    <child
+      link="left_4_link" />
+    <axis
+      xyz="0 -1 0" />
+    <mimic
+      joint="left_3_joint"
+      multiplier="1"
+      offset="0" />
+  </joint>
+ 
+  <link
+    name="right_4_link">
+   
+    <inertial>
+      <origin
+        xyz="0.0167697761373788 -9.99134778669757E-05 0.011594695938048"
+        rpy="0 0 0" />
+      <mass
+        value="0.0144758999770992" />
+      <inertia
+        ixx="2.61112201179927E-06"
+        ixy="-2.26921104178095E-11"
+        ixz="-2.04038212451252E-06"
+        iyy="5.19299573894196E-06"
+        iyz="-1.68854193042971E-11"
+        izz="4.08921935173279E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/right_4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/right_4_link.STL" />
+      </geometry>
+    </collision>
+
+  </link>
+  <joint
+    name="right_4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0001 0.02849 0.092"
+      rpy="0 0 1.5708" />
+    <parent
+      link="${link_name}" />
+    <child
+      link="right_4_link" />
+    <axis
+      xyz="0 -1 0" />
+    <mimic
+      joint="right_3_joint"
+      multiplier="1"
+      offset="0" />
+  </joint>
+  
+  <link
+    name="left_3_link">
+    <inertial>
+      <origin
+        xyz="-0.0118555883710867 -9.99986365400538E-05 0.0172395866913808"
+        rpy="0 0 0" />
+      <mass
+        value="0.0116936770982047" />
+      <inertia
+        ixx="2.17032851391983E-06"
+        ixy="2.32951839302905E-13"
+        ixz="1.11023790291516E-06"
+        iyy="2.63023717817386E-06"
+        iyz="-1.85384171812495E-13"
+        izz="1.85073417902647E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/left_3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/left_3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0001 -0.016234 0.10228"
+      rpy="0 0 1.5708" />
+    <parent
+      link="${link_name}" />
+    <child
+      link="left_3_link" />
+    <axis
+      xyz="0 -1 0" />
+     <mimic
+      joint="right_3_joint"
+      multiplier="-1"
+      offset="0" />
+   </joint>
+  <link
+    name="left_fingertips_link">
+    <inertial>
+      <origin
+        xyz="0.00010000171160921 0.00063294013123457 0.018673203244768"
+        rpy="0 0 0" />
+      <mass
+        value="0.0122304966394345" />
+      <inertia
+        ixx="3.66173593403382E-06"
+        ixy="1.22381514856025E-13"
+        ixz="3.39077711567671E-13"
+        iyy="3.80515648947654E-06"
+        iyz="-5.95757115137681E-07"
+        izz="9.25942753490701E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/left_fingertips_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.101960784313725 0.101960784313725 0.101960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://roshand_visualizer/meshes/left_fingertips_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_fingertips_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0320457890866595 0 0.0383805602071326"
+      rpy="0 0 -1.5707963267949" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_fingertips_link" />
+    <axis
+      xyz="1 0 0" />
+   <mimic
+      joint="left_3_joint"
+      multiplier="-1"
+      offset="0" />
+  </joint>
+
+
+  <link
+    name="left_fingertips_sensor_1_link">
+    
+  </link>
+  <joint
+    name="left_fingertips_sensor_1_joint"
+    type="fixed">
+    <origin
+      xyz="0.0061 0.009 0.0395"
+      rpy="-1.5708 0 3.1416" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_fingertips_sensor_2_link">
+    
+  </link>
+  <joint
+    name="left_fingertips_sensor_2_joint"
+    type="fixed">
+    <origin
+      xyz="0.00610000000001704 0.00900000000000002 0.0304999999999998"
+      rpy="-1.5707963267949 0 3.1416" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_fingertips_sensor_3_link">
+    
+  </link>
+  <joint
+    name="left_fingertips_sensor_3_joint"
+    type="fixed">
+    <origin
+      xyz="0.00610000000001685 0.00900000000000002 0.0214999999999998"
+      rpy="-1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_fingertips_sensor_4_link">
+    
+  </link>
+  <joint
+    name="left_fingertips_sensor_4_joint"
+    type="fixed">
+    <origin
+      xyz="0.0061 0.009 0.0125"
+      rpy="-1.5708 0 3.1416" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_4_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_fingertips_sensor_5_link">
+    
+  </link>
+  <joint
+    name="left_fingertips_sensor_5_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00589999999998734 0.00900000000000002 0.0395"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_5_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_fingertips_sensor_6_link">
+   
+  </link>
+  <joint
+    name="left_fingertips_sensor_6_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00589999999998734 0.00900000000000002 0.0304999999999999"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_6_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_fingertips_sensor_7_link">
+   
+  </link>
+  <joint
+    name="left_fingertips_sensor_7_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00589999999998734 0.00900000000000002 0.0214999999999999"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_7_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_fingertips_sensor_8_link">
+    
+  </link>
+  <joint
+    name="left_fingertips_sensor_8_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00589999999998734 0.00900000000000002 0.0124999999999999"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="left_fingertips_link" />
+    <child
+      link="left_fingertips_sensor_8_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_1_link">
+    
+  </link>
+  <joint
+    name="left_sensor_1_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0142417199599116 -0.0061000000000047 0.0310994117723055"
+      rpy="-2.26648702719302 0 1.57079632679427" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_1_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_2_link">
+    
+  </link>
+  <joint
+    name="left_sensor_2_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00847347792431308 -0.00610000000000448 0.0241909109350219"
+      rpy="-2.26648702719302 0 1.57079632679444" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_2_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_3_link">
+    
+  </link>
+  <joint
+    name="left_sensor_3_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00270523588871424 -0.00610000000000425 0.0172824100977379"
+      rpy="-2.26648702719303 0 1.5707963267945" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_3_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_4_link">
+    
+  </link>
+  <joint
+    name="left_sensor_4_joint"
+    type="fixed">
+    <origin
+      xyz="0.00306300614688458 -0.0061000000000038 0.0103739092604539"
+      rpy="-2.26648702719302 0 1.57079632679443" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_4_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_5_link">
+    
+  </link>
+  <joint
+    name="left_sensor_5_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0142417199599117 0.00590000000000125 0.0310994117723056"
+      rpy="2.26648702719302 0 -1.5707963267947" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_5_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_6_link">
+   
+  </link>
+  <joint
+    name="left_sensor_6_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00847347792431319 0.00590000000000125 0.024190910935022"
+      rpy="2.26648702719302 0 -1.57079632679452" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_6_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_7_link">
+    
+  </link>
+  <joint
+    name="left_sensor_7_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00270523588871434 0.00590000000000124 0.017282410097738"
+      rpy="2.26648702719302 0 -1.57079632679458" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_7_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_sensor_8_link">
+    
+  </link>
+  <joint
+    name="left_sensor_8_joint"
+    type="fixed">
+    <origin
+      xyz="0.0030630061468845 0.00590000000000102 0.010373909260454"
+      rpy="2.26648702719303 0 -1.57079632679468" />
+    <parent
+      link="left_3_link" />
+    <child
+      link="left_sensor_8_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name ="roshand_end_effector" />
+  <joint name="roshand_joint_end_effector" type="fixed">
+        <parent link="${link_name}"/>
+        <child link="roshand_end_effector"/>
+        <axis xyz="0 0 1"/>
+        <!--limit effort="2000" velocity="1" lower="${joint_lower_limit}" upper="${joint_upper_limit}"/-->
+        <origin xyz="0 0 0.1600" rpy="0 0 0"/>
+     </joint>
+
+
+  <transmission name="right_3_joint_trans">
+	<type>transmission_interface/SimpleTransmission</type>
+	<actuator name="right_3_motor">
+		<mechanicalReduction>1</mechanicalReduction>
+		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	</actuator>
+	<joint name="right_3_joint">
+		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	</joint>
+  </transmission>
+
+
+
+    <gazebo>
+      <plugin name="left_3_joint_mimic_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+        <joint>right_3_joint</joint>
+        <mimicJoint>left_3_joint</mimicJoint>
+        <!--xacro:if value="${has_pid}">                     
+          <hasPID />
+        </xacro:if-->
+        <multiplier>-1</multiplier>
+        <offset>0</offset>
+        <sensitiveness>1</sensitiveness>  
+        <maxEffort>100</maxEffort>            
+          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo>
+
+
+
+    <gazebo>
+      <plugin name="left_4_joint_mimic_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+        <joint>right_3_joint</joint>
+        <mimicJoint>left_4_joint</mimicJoint>
+        <!--xacro:if value="${has_pid}">                     
+          <hasPID />
+        </xacro:if-->
+        <multiplier>1</multiplier>
+        <offset>0</offset>
+        <sensitiveness>1</sensitiveness>  
+        <maxEffort>100</maxEffort>            
+          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo>
+
+
+
+    <gazebo>
+      <plugin name="right_4_joint_mimic_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+        <joint>right_3_joint</joint>
+        <mimicJoint>right_4_joint</mimicJoint>
+        <!--xacro:if value="${has_pid}">                     
+          <hasPID />
+        </xacro:if-->
+        <multiplier>1</multiplier>
+        <offset>0</offset>
+        <sensitiveness>1</sensitiveness>  
+        <maxEffort>100</maxEffort>            
+          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo>
+
+
+
+    <gazebo>
+      <plugin name="left_fingertips_joint_mimic_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+        <joint>right_3_joint</joint>
+        <mimicJoint>left_fingertips_joint</mimicJoint>
+        <!--xacro:if value="${has_pid}">                     
+          <hasPID />
+        </xacro:if-->
+        <multiplier>-1</multiplier>
+        <offset>0</offset>
+        <sensitiveness>1</sensitiveness>  
+        <maxEffort>100</maxEffort>            
+          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo>
+
+
+
+    <gazebo>
+      <plugin name="right_fingertips_joint_mimic_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+        <joint>right_3_joint</joint>
+        <mimicJoint>right_fingertips_joint</mimicJoint>
+        <!--xacro:if value="${has_pid}">                     
+          <hasPID />
+        </xacro:if-->
+        <multiplier>-1</multiplier>
+        <offset>0</offset>
+        <sensitiveness>1</sensitiveness>  
+        <maxEffort>100</maxEffort>            
+          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo>
+
+
+
+
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+
+     </xacro:macro>
+</root>

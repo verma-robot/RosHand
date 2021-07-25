@@ -1,0 +1,8 @@
+/:
+  joint_3_position_controller:
+    joint: right_3_joint
+    pid: {p: 5.0, i: 0.0, d: 0.0}
+    type: position_controllers/JointPositionController
+  joint_state_controller:
+    publish_rate: 50
+    type: joint_state_controller/JointStateController

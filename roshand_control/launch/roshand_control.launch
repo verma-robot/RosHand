@@ -1,0 +1,36 @@
+<launch>
+
+
+  <arg name="use_trajectory_controller" default="true"/>
+
+
+  <arg name="robot_namespace" default="/"/>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find roshand_visualizer)/urdf/roshand_description_alone.xacro'
+   --inorder robot_namespace:=$(arg robot_namespace)
+ " />
+
+  <rosparam file="$(find roshand_control)/config/roshand_control.yaml" command="load"/>
+ 
+
+
+  <node name="roshand_joints_controller" pkg="controller_manager" type="spawner" respawn="false"
+ns="$(arg robot_namespace)"
+        args="joint_3_position_controller  joint_state_controller"/> 
+
+
+
+  
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen">    
+    <remap from="/joint_states" to="/roshand/joint_states"/>    
+  </node>
+  
+  <!--node name="command_robot_home_pose" pkg="kinova_control" type="move_robot.py"
+        respawn="false" output="screen" args="$(arg kinova_robotType)">       
+  </node-->
+ 
+</launch>

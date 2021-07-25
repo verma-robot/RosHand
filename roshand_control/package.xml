@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>roshand_control</name>
+  <version>0.0.0</version>
+  <description>The roshand_control package</description>
+
+  <maintainer email="support@verma-robot.com">scholar</maintainer>
+
+
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>effort_controllers</build_depend>
+  <build_depend>joint_state_controller</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_export_depend>effort_controllers</build_export_depend>
+  <build_export_depend>joint_state_controller</build_export_depend>
+  <build_export_depend>robot_state_publisher</build_export_depend>
+  <exec_depend>effort_controllers</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <build_depend>roboticsgroup_upatras_gazebo_plugins</build_depend>
+  <build_export_depend>roboticsgroup_upatras_gazebo_plugins</build_export_depend>
+  <exec_depend>roboticsgroup_upatras_gazebo_plugins</exec_depend>
+  <export>
+
+
+  </export>
+</package>

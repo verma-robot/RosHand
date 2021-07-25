@@ -1,0 +1,6 @@
+uint8 close_step_mag
+uint8 open_step_mag
+   	
+---
+
+bool Command_Send
